@@ -116,11 +116,11 @@ class DirectoristCategory extends GutenbergBlockAbstract
             'type'           => 'fetch',
             'request_params' => array(
                 'per_page' => $per_page,
+                'category_info' => $this->get_categories($per_page, $selected_cats),
             ),
         );
 
         $app_page_data['data']['data_source'] = $data_source;
-        $app_page_data['category_info'] = $this->get_categories($per_page, $selected_cats);
 
         return $app_page_data;
     }

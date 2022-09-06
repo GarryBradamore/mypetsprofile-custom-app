@@ -70,6 +70,12 @@ class DirectoristCategory extends GutenbergBlockAbstract
                 'fieldtype' => 'text',
                 'default'   => '',
                 'label'     => 'Enter category',
+            ),
+            array(
+                'name'      => 'selected_cats',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Selected Categories',
             )
         );
     }
@@ -94,10 +100,16 @@ class DirectoristCategory extends GutenbergBlockAbstract
     function update_block_data($app_page_data, $block_data)
     {
         $per_page = 5;
+        $selected_cats = '';
 
         // Per Page.
         if (isset($block_data['attrs']['per_page']) && !empty($block_data['attrs']['per_page'])) {
             $per_page = absint($block_data['attrs']['per_page']);
+        }
+
+        // Selected Cats.
+        if (isset($block_data['attrs']['selected_cats']) && !empty($block_data['attrs']['selected_cats'])) {
+            $selected_cats = absint($block_data['attrs']['selected_cats']);
         }
 
         $data_source = array(
@@ -108,7 +120,39 @@ class DirectoristCategory extends GutenbergBlockAbstract
         );
 
         $app_page_data['data']['data_source'] = $data_source;
+        $app_page_data['category_info'] = $this->get_categories($per_page, $selected_cats);
 
         return $app_page_data;
+    }
+
+    /**
+     * GET CATEGORY BY QUERY
+     */
+    public function get_categories($per_page = 5, $selected_cats = '')
+    {
+        $data = [];
+
+        if (empty($selected_cats)) return $data;
+
+        $terms = get_terms(
+            array(
+                'taxonomy' => ATBDP_CATEGORY,
+                'hide_empty' => false,
+                'number' => $per_page,
+                'include' => explode(',', $selected_cats),
+            )
+        );
+
+        if ($terms && count($terms) > 0) {
+            foreach ($terms as $term) {
+                $data[$term->term_id] = array(
+                    'id' => $term->term_id,
+                    'name' => $term->name,
+                    'image' => get_term_meta($term->term_id, 'image', true)
+                );
+            }
+        }
+
+        return $data;
     }
 }

@@ -109,18 +109,19 @@ class DirectoristCategory extends GutenbergBlockAbstract
 
         // Selected Cats.
         if (isset($block_data['attrs']['selected_cats']) && !empty($block_data['attrs']['selected_cats'])) {
-            $selected_cats = absint($block_data['attrs']['selected_cats']);
+            $selected_cats = $block_data['attrs']['selected_cats'];
         }
 
         $data_source = array(
             'type'           => 'fetch',
             'request_params' => array(
                 'per_page' => $per_page,
-                'category_info' => $this->get_categories($per_page, $selected_cats),
+                'selected_cats' => $selected_cats,
             ),
         );
 
         $app_page_data['data']['data_source'] = $data_source;
+        $app_page_data['data']['category_info'] = $this->get_categories($per_page, $selected_cats);
 
         return $app_page_data;
     }
@@ -139,17 +140,21 @@ class DirectoristCategory extends GutenbergBlockAbstract
                 'taxonomy' => ATBDP_CATEGORY,
                 'hide_empty' => false,
                 'number' => $per_page,
-                'include' => explode(',', $selected_cats),
+                'include' => $selected_cats,
             )
         );
 
         if ($terms && count($terms) > 0) {
             foreach ($terms as $term) {
-                $data[$term->term_id] = array(
-                    'id' => $term->term_id,
-                    'name' => $term->name,
-                    'image' => get_term_meta($term->term_id, 'image', true)
-                );
+                $image = get_term_meta($term->term_id, 'app_image_cover', true) ? get_term_meta($term->term_id, 'app_image_cover', true) : 0;
+                if ($image) {
+                    $cat_img_url = wp_get_attachment_image_url($image);
+                    $data[] = array(
+                        'id' => $term->term_id,
+                        'name' => $term->name,
+                        'image' => $cat_img_url
+                    );
+                }
             }
         }
 

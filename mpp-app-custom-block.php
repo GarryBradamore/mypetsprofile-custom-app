@@ -76,6 +76,12 @@ class DirectoristCategory extends GutenbergBlockAbstract
                 'fieldtype' => 'text',
                 'default'   => '',
                 'label'     => 'Selected Categories',
+            ),
+            array(
+                'name'      => 'see_more_link',
+                'fieldtype' => 'text',
+                'default'   => home_url('/search-directory/'),
+                'label'     => 'See More Link',
             )
         );
     }

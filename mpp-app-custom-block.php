@@ -147,12 +147,14 @@ class DirectoristCategory extends GutenbergBlockAbstract
         if ($terms && count($terms) > 0) {
             foreach ($terms as $term) {
                 $image = get_term_meta($term->term_id, 'app_image_cover', true) ? get_term_meta($term->term_id, 'app_image_cover', true) : 0;
+                $cat_app_url = get_term_meta($term->term_id, 'cat_app_url', true) ? get_term_meta($term->term_id, 'cat_app_url', true) : home_url('/search-directory/');
                 if ($image) {
                     $cat_img_url = wp_get_attachment_image_url($image);
                     $data[] = array(
                         'id' => $term->term_id,
                         'name' => $term->name,
-                        'image' => $cat_img_url
+                        'image' => $cat_img_url,
+                        'url' => $cat_app_url
                     );
                 }
             }

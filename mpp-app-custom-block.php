@@ -147,6 +147,8 @@ class DirectoristCategory extends GutenbergBlockAbstract
                 'hide_empty' => false,
                 'number' => $per_page,
                 'include' => $selected_cats,
+                'orderby' => 'include',
+                'order' => 'ASC',
             )
         );
 

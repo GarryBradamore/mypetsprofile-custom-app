@@ -89,7 +89,7 @@ class DirectoristCategory extends GutenbergBlockAbstract
     function get_preview()
     {
         return "<div>
-                <h3>" . esc_html__('Categories', '') . "</h3>
+                <h3 class='bbapp-block-title'>" . esc_html__('Categories', '') . "</h3>
                 <ul>
                     <li id='li_one'> <div className='appboss_div'>" . esc_html__('Category Name', '') . "</div></li>
                     <li id='li_two'> <div className='appboss_div' >" . esc_html__('Category Name', '') . "</div></li>

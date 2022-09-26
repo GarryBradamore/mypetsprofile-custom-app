@@ -17,8 +17,13 @@ if (!defined('ABSPATH')) {
 function bbapp_custom_work_init()
 {
     if (class_exists('bbapp')) {
-        include 'mpp-app-custom-block.php';
+        // Includes
+        include 'blocks/directorist-category.php';
+        include 'blocks/frontpage-menu-custom.php';
+
+        // Active Classes
         BuddyBossApp\Custom\DirectoristCategory::instance();
+        BuddyBossApp\Custom\FrontpageMenuCustom::instance();
     }
 }
 add_action('plugins_loaded', 'bbapp_custom_work_init');

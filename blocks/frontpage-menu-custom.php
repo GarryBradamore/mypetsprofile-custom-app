@@ -66,6 +66,12 @@ class FrontpageMenuCustom extends GutenbergBlockAbstract
                 'label'     => 'Option-1 Text',
             ),
             array(
+                'name'      => 'option_1_color',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Option-1 Color',
+            ),
+            array(
                 'name'      => 'option_1_url',
                 'fieldtype' => 'text',
                 'default'   => '',
@@ -84,6 +90,12 @@ class FrontpageMenuCustom extends GutenbergBlockAbstract
                 'label'     => 'Option-2 Text',
             ),
             array(
+                'name'      => 'option_2_color',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Option-2 Color',
+            ),
+            array(
                 'name'      => 'option_2_url',
                 'fieldtype' => 'text',
                 'default'   => '',
@@ -100,6 +112,12 @@ class FrontpageMenuCustom extends GutenbergBlockAbstract
                 'fieldtype' => 'text',
                 'default'   => '',
                 'label'     => 'Option-3 Text',
+            ),
+            array(
+                'name'      => 'option_3_color',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Option-3 Color',
             ),
             array(
                 'name'      => 'option_3_url',
@@ -138,19 +156,43 @@ class FrontpageMenuCustom extends GutenbergBlockAbstract
         $options = [];
 
         // Option One
-        $options[1]['text'] = isset($block_data['attrs']['option_1_text']) && !empty($block_data['attrs']['option_1_text']) ? $block_data['attrs']['option_1_text'] : '';
-        $options[1]['url'] = isset($block_data['attrs']['option_1_url']) && !empty($block_data['attrs']['option_1_url']) ? $block_data['attrs']['option_1_url'] : '';
-        $options[1]['image'] = isset($block_data['attrs']['option_1_image']) && !empty($block_data['attrs']['option_1_image']) ? $block_data['attrs']['option_1_image'] : '';
+        $option_1_text = isset($block_data['attrs']['option_1_text']) && !empty($block_data['attrs']['option_1_text']) ? $block_data['attrs']['option_1_text'] : '';
+        $option_1_color = isset($block_data['attrs']['option_1_color']) && !empty($block_data['attrs']['option_1_color']) ? $block_data['attrs']['option_1_color'] : '';
+        $option_1_url = isset($block_data['attrs']['option_1_url']) && !empty($block_data['attrs']['option_1_url']) ? $block_data['attrs']['option_1_url'] : '';
+        $option_1_image = isset($block_data['attrs']['option_1_image']) && !empty($block_data['attrs']['option_1_image']) ? $block_data['attrs']['option_1_image'] : '';
+
+        $options[] = array(
+            'text'  => $option_1_text,
+            'color'  => $option_1_color,
+            'url'   => $option_1_url,
+            'image' => $option_1_image
+        );
 
         // Option Two
-        $options[2]['text'] = isset($block_data['attrs']['option_2_text']) && !empty($block_data['attrs']['option_2_text']) ? $block_data['attrs']['option_2_text'] : '';
-        $options[2]['url'] = isset($block_data['attrs']['option_2_url']) && !empty($block_data['attrs']['option_2_url']) ? $block_data['attrs']['option_2_url'] : '';
-        $options[2]['image'] = isset($block_data['attrs']['option_2_image']) && !empty($block_data['attrs']['option_2_image']) ? $block_data['attrs']['option_2_image'] : '';
+        $option_2_text = isset($block_data['attrs']['option_2_text']) && !empty($block_data['attrs']['option_2_text']) ? $block_data['attrs']['option_2_text'] : '';
+        $option_2_color = isset($block_data['attrs']['option_2_color']) && !empty($block_data['attrs']['option_2_color']) ? $block_data['attrs']['option_2_color'] : '';
+        $option_2_url = isset($block_data['attrs']['option_2_url']) && !empty($block_data['attrs']['option_2_url']) ? $block_data['attrs']['option_2_url'] : '';
+        $option_2_image = isset($block_data['attrs']['option_2_image']) && !empty($block_data['attrs']['option_2_image']) ? $block_data['attrs']['option_2_image'] : '';
+
+        $options[] = array(
+            'text'  => $option_2_text,
+            'color'  => $option_2_color,
+            'url'   => $option_2_url,
+            'image' => $option_2_image
+        );
 
         // Option One
-        $options[3]['text'] = isset($block_data['attrs']['option_3_text']) && !empty($block_data['attrs']['option_3_text']) ? $block_data['attrs']['option_3_text'] : '';
-        $options[3]['url'] = isset($block_data['attrs']['option_3_url']) && !empty($block_data['attrs']['option_3_url']) ? $block_data['attrs']['option_3_url'] : '';
-        $options[3]['image'] = isset($block_data['attrs']['option_3_image']) && !empty($block_data['attrs']['option_3_image']) ? $block_data['attrs']['option_3_image'] : '';
+        $option_3_text = isset($block_data['attrs']['option_3_text']) && !empty($block_data['attrs']['option_3_text']) ? $block_data['attrs']['option_3_text'] : '';
+        $option_3_color = isset($block_data['attrs']['option_3_color']) && !empty($block_data['attrs']['option_3_color']) ? $block_data['attrs']['option_3_color'] : '';
+        $option_3_url = isset($block_data['attrs']['option_3_url']) && !empty($block_data['attrs']['option_3_url']) ? $block_data['attrs']['option_3_url'] : '';
+        $option_3_image = isset($block_data['attrs']['option_3_image']) && !empty($block_data['attrs']['option_3_image']) ? $block_data['attrs']['option_3_image'] : '';
+
+        $options[] = array(
+            'text'  => $option_3_text,
+            'color'  => $option_3_color,
+            'url'   => $option_3_url,
+            'image' => $option_3_image
+        );
 
         $app_page_data['data']['menu_options'] = $options;
 

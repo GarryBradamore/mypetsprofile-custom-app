@@ -66,12 +66,6 @@ class MppImageMenu extends GutenbergBlockAbstract
                 'label'     => 'Option-1 Text',
             ),
             array(
-                'name'      => 'option_1_color',
-                'fieldtype' => 'text',
-                'default'   => '',
-                'label'     => 'Option-1 Color',
-            ),
-            array(
                 'name'      => 'option_1_url',
                 'fieldtype' => 'text',
                 'default'   => '',
@@ -88,12 +82,6 @@ class MppImageMenu extends GutenbergBlockAbstract
                 'fieldtype' => 'text',
                 'default'   => '',
                 'label'     => 'Option-2 Text',
-            ),
-            array(
-                'name'      => 'option_2_color',
-                'fieldtype' => 'text',
-                'default'   => '',
-                'label'     => 'Option-2 Color',
             ),
             array(
                 'name'      => 'option_2_url',
@@ -114,12 +102,6 @@ class MppImageMenu extends GutenbergBlockAbstract
                 'label'     => 'Option-3 Text',
             ),
             array(
-                'name'      => 'option_3_color',
-                'fieldtype' => 'text',
-                'default'   => '',
-                'label'     => 'Option-3 Color',
-            ),
-            array(
                 'name'      => 'option_3_url',
                 'fieldtype' => 'text',
                 'default'   => '',
@@ -130,6 +112,62 @@ class MppImageMenu extends GutenbergBlockAbstract
                 'fieldtype' => 'text',
                 'default'   => '',
                 'label'     => 'Option-3 Image',
+            ),
+
+            array(
+                'name'      => 'option_4_text',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Option-4 Text',
+            ),
+            array(
+                'name'      => 'option_4_url',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Option-4 Url',
+            ),
+            array(
+                'name'      => 'option_4_image',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Option-4 Image',
+            ),
+
+            array(
+                'name'      => 'option_5_text',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Option-5 Text',
+            ),
+            array(
+                'name'      => 'option_5_url',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Option-5 Url',
+            ),
+            array(
+                'name'      => 'option_5_image',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Option-5 Image',
+            ),
+            array(
+                'name'      => 'option_6_text',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Option-6 Text',
+            ),
+            array(
+                'name'      => 'option_6_url',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Option-6 Url',
+            ),
+            array(
+                'name'      => 'option_6_image',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Option-6 Image',
             ),
             array(
                 'name'      => 'more_text',
@@ -169,42 +207,81 @@ class MppImageMenu extends GutenbergBlockAbstract
 
         // Option One
         $option_1_text = isset($block_data['attrs']['option_1_text']) && !empty($block_data['attrs']['option_1_text']) ? $block_data['attrs']['option_1_text'] : '';
-        $option_1_color = isset($block_data['attrs']['option_1_color']) && !empty($block_data['attrs']['option_1_color']) ? $block_data['attrs']['option_1_color'] : '';
         $option_1_url = isset($block_data['attrs']['option_1_url']) && !empty($block_data['attrs']['option_1_url']) ? $block_data['attrs']['option_1_url'] : '';
         $option_1_image = isset($block_data['attrs']['option_1_image']) && !empty($block_data['attrs']['option_1_image']) ? $block_data['attrs']['option_1_image'] : '';
 
-        $options[] = array(
-            'text'  => $option_1_text,
-            'color'  => $option_1_color,
-            'url'   => $option_1_url,
-            'image' => $option_1_image
-        );
+        if (!empty($option_1_text)) {
+            $options[] = array(
+                'text'  => $option_1_text,
+                'url'   => $option_1_url,
+                'image' => $option_1_image
+            );
+        }
 
         // Option Two
         $option_2_text = isset($block_data['attrs']['option_2_text']) && !empty($block_data['attrs']['option_2_text']) ? $block_data['attrs']['option_2_text'] : '';
-        $option_2_color = isset($block_data['attrs']['option_2_color']) && !empty($block_data['attrs']['option_2_color']) ? $block_data['attrs']['option_2_color'] : '';
         $option_2_url = isset($block_data['attrs']['option_2_url']) && !empty($block_data['attrs']['option_2_url']) ? $block_data['attrs']['option_2_url'] : '';
         $option_2_image = isset($block_data['attrs']['option_2_image']) && !empty($block_data['attrs']['option_2_image']) ? $block_data['attrs']['option_2_image'] : '';
 
-        $options[] = array(
-            'text'  => $option_2_text,
-            'color'  => $option_2_color,
-            'url'   => $option_2_url,
-            'image' => $option_2_image
-        );
+        if (!empty($option_2_text)) {
+            $options[] = array(
+                'text'  => $option_2_text,
+                'url'   => $option_2_url,
+                'image' => $option_2_image
+            );
+        }
 
-        // Option One
+        // Option Three
         $option_3_text = isset($block_data['attrs']['option_3_text']) && !empty($block_data['attrs']['option_3_text']) ? $block_data['attrs']['option_3_text'] : '';
-        $option_3_color = isset($block_data['attrs']['option_3_color']) && !empty($block_data['attrs']['option_3_color']) ? $block_data['attrs']['option_3_color'] : '';
         $option_3_url = isset($block_data['attrs']['option_3_url']) && !empty($block_data['attrs']['option_3_url']) ? $block_data['attrs']['option_3_url'] : '';
         $option_3_image = isset($block_data['attrs']['option_3_image']) && !empty($block_data['attrs']['option_3_image']) ? $block_data['attrs']['option_3_image'] : '';
 
-        $options[] = array(
-            'text'  => $option_3_text,
-            'color'  => $option_3_color,
-            'url'   => $option_3_url,
-            'image' => $option_3_image
-        );
+        if (!empty($option_3_text)) {
+            $options[] = array(
+                'text'  => $option_3_text,
+                'url'   => $option_3_url,
+                'image' => $option_3_image
+            );
+        }
+
+        // Option Four
+        $option_4_text = isset($block_data['attrs']['option_3_text']) && !empty($block_data['attrs']['option_3_text']) ? $block_data['attrs']['option_3_text'] : '';
+        $option_4_url = isset($block_data['attrs']['option_3_url']) && !empty($block_data['attrs']['option_3_url']) ? $block_data['attrs']['option_3_url'] : '';
+        $option_4_image = isset($block_data['attrs']['option_3_image']) && !empty($block_data['attrs']['option_3_image']) ? $block_data['attrs']['option_3_image'] : '';
+
+        if (!empty($option_4_text)) {
+            $options[] = array(
+                'text'  => $option_4_text,
+                'url'   => $option_4_url,
+                'image' => $option_4_image
+            );
+        }
+
+        // Option Five
+        $option_5_text = isset($block_data['attrs']['option_3_text']) && !empty($block_data['attrs']['option_3_text']) ? $block_data['attrs']['option_3_text'] : '';
+        $option_5_url = isset($block_data['attrs']['option_3_url']) && !empty($block_data['attrs']['option_3_url']) ? $block_data['attrs']['option_3_url'] : '';
+        $option_5_image = isset($block_data['attrs']['option_3_image']) && !empty($block_data['attrs']['option_3_image']) ? $block_data['attrs']['option_3_image'] : '';
+
+        if (!empty($option_5_text)) {
+            $options[] = array(
+                'text'  => $option_5_text,
+                'url'   => $option_5_url,
+                'image' => $option_5_image
+            );
+        }
+
+        // Option Six
+        $option_6_text = isset($block_data['attrs']['option_3_text']) && !empty($block_data['attrs']['option_3_text']) ? $block_data['attrs']['option_3_text'] : '';
+        $option_6_url = isset($block_data['attrs']['option_3_url']) && !empty($block_data['attrs']['option_3_url']) ? $block_data['attrs']['option_3_url'] : '';
+        $option_6_image = isset($block_data['attrs']['option_3_image']) && !empty($block_data['attrs']['option_3_image']) ? $block_data['attrs']['option_3_image'] : '';
+
+        if (!empty($option_6_text)) {
+            $options[] = array(
+                'text'  => $option_6_text,
+                'url'   => $option_6_url,
+                'image' => $option_6_image
+            );
+        }
 
         $app_page_data['data']['menu_options'] = $options;
 

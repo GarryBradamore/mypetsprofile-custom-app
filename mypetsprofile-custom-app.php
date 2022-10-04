@@ -20,10 +20,12 @@ function bbapp_custom_work_init()
         // Includes
         include 'blocks/directorist-category.php';
         include 'blocks/frontpage-menu-custom.php';
+        include 'blocks/mpp-image-menu.php';
 
         // Active Classes
         BuddyBossApp\Custom\DirectoristCategory::instance();
         BuddyBossApp\Custom\FrontpageMenuCustom::instance();
+        BuddyBossApp\Custom\MppImageMenu::instance();
     }
 }
 add_action('plugins_loaded', 'bbapp_custom_work_init');

@@ -245,9 +245,9 @@ class MppImageMenu extends GutenbergBlockAbstract
         }
 
         // Option Four
-        $option_4_text = isset($block_data['attrs']['option_3_text']) && !empty($block_data['attrs']['option_3_text']) ? $block_data['attrs']['option_3_text'] : '';
-        $option_4_url = isset($block_data['attrs']['option_3_url']) && !empty($block_data['attrs']['option_3_url']) ? $block_data['attrs']['option_3_url'] : '';
-        $option_4_image = isset($block_data['attrs']['option_3_image']) && !empty($block_data['attrs']['option_3_image']) ? $block_data['attrs']['option_3_image'] : '';
+        $option_4_text = isset($block_data['attrs']['option_4_text']) && !empty($block_data['attrs']['option_4_text']) ? $block_data['attrs']['option_4_text'] : '';
+        $option_4_url = isset($block_data['attrs']['option_4_url']) && !empty($block_data['attrs']['option_4_url']) ? $block_data['attrs']['option_4_url'] : '';
+        $option_4_image = isset($block_data['attrs']['option_4_image']) && !empty($block_data['attrs']['option_4_image']) ? $block_data['attrs']['option_4_image'] : '';
 
         if (!empty($option_4_text)) {
             $options[] = array(
@@ -258,9 +258,9 @@ class MppImageMenu extends GutenbergBlockAbstract
         }
 
         // Option Five
-        $option_5_text = isset($block_data['attrs']['option_3_text']) && !empty($block_data['attrs']['option_3_text']) ? $block_data['attrs']['option_3_text'] : '';
-        $option_5_url = isset($block_data['attrs']['option_3_url']) && !empty($block_data['attrs']['option_3_url']) ? $block_data['attrs']['option_3_url'] : '';
-        $option_5_image = isset($block_data['attrs']['option_3_image']) && !empty($block_data['attrs']['option_3_image']) ? $block_data['attrs']['option_3_image'] : '';
+        $option_5_text = isset($block_data['attrs']['option_5_text']) && !empty($block_data['attrs']['option_5_text']) ? $block_data['attrs']['option_5_text'] : '';
+        $option_5_url = isset($block_data['attrs']['option_5_url']) && !empty($block_data['attrs']['option_5_url']) ? $block_data['attrs']['option_5_url'] : '';
+        $option_5_image = isset($block_data['attrs']['option_5_image']) && !empty($block_data['attrs']['option_5_image']) ? $block_data['attrs']['option_5_image'] : '';
 
         if (!empty($option_5_text)) {
             $options[] = array(
@@ -271,9 +271,9 @@ class MppImageMenu extends GutenbergBlockAbstract
         }
 
         // Option Six
-        $option_6_text = isset($block_data['attrs']['option_3_text']) && !empty($block_data['attrs']['option_3_text']) ? $block_data['attrs']['option_3_text'] : '';
-        $option_6_url = isset($block_data['attrs']['option_3_url']) && !empty($block_data['attrs']['option_3_url']) ? $block_data['attrs']['option_3_url'] : '';
-        $option_6_image = isset($block_data['attrs']['option_3_image']) && !empty($block_data['attrs']['option_3_image']) ? $block_data['attrs']['option_3_image'] : '';
+        $option_6_text = isset($block_data['attrs']['option_6_text']) && !empty($block_data['attrs']['option_6_text']) ? $block_data['attrs']['option_6_text'] : '';
+        $option_6_url = isset($block_data['attrs']['option_6_url']) && !empty($block_data['attrs']['option_6_url']) ? $block_data['attrs']['option_6_url'] : '';
+        $option_6_image = isset($block_data['attrs']['option_6_image']) && !empty($block_data['attrs']['option_6_image']) ? $block_data['attrs']['option_6_image'] : '';
 
         if (!empty($option_6_text)) {
             $options[] = array(

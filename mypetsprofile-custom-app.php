@@ -22,6 +22,9 @@ function bbapp_custom_work_init()
         include 'blocks/frontpage-menu-custom.php';
         include 'blocks/mpp-image-menu.php';
 
+        // Custom post type
+        include 'inc/mpp-custom-post-type.php';
+
         // Active Classes
         BuddyBossApp\Custom\DirectoristCategory::instance();
         BuddyBossApp\Custom\FrontpageMenuCustom::instance();

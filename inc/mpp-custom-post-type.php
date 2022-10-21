@@ -61,9 +61,9 @@ class MPP_App_Support_Post_Type
             'has_archive'        => true,
             'hierarchical'       => false,
             'menu_position'      => 20,
-            'supports'           => array('title', 'editor', 'author', 'thumbnail'),
-            'taxonomies'         => array('category'),
-            'show_in_rest'       => true
+            'supports'           => array('title', 'author', 'thumbnail'),
+            'show_in_rest'       => false,
+            'menu_icon'          => 'dashicons-smartphone'
         );
 
         register_post_type('mpp_app_menu', $args);
@@ -96,63 +96,81 @@ class MPP_App_Support_Post_Type
         global $post;
 
         // Get Value of Fields From Database
-        $diwp_textfield = get_post_meta($post->ID, '_diwp_text_field', true);
-        $diwp_radiofield = get_post_meta($post->ID, '_diwp_radio_field', true);
-        $diwp_checkboxfield = get_post_meta($post->ID, '_diwp_checkbox_field', true) ? get_post_meta($post->ID, '_diwp_checkbox_field', true) : [];
-        $diwp_selectfield = get_post_meta($post->ID, '_diwp_select_field', true);
-        $diwp_textareafield = get_post_meta($post->ID, '_diwp_textarea_field', true);
+        $option_title = get_post_meta($post->ID, 'option_title', true) ?  get_post_meta($post->ID, 'option_title', true) : "";
+        $option_subtitle = get_post_meta($post->ID, 'option_subtitle', true) ?  get_post_meta($post->ID, 'option_subtitle', true) : "";
+        $option_description = get_post_meta($post->ID, 'option_description', true) ?  get_post_meta($post->ID, 'option_description', true) : "";
+        $option_short_description = get_post_meta($post->ID, 'option_short_description', true) ?  get_post_meta($post->ID, 'option_short_description', true) : "";
+        $option_category = get_post_meta($post->ID, 'option_category', true) ?  get_post_meta($post->ID, 'option_category', true) : "";
+        $option_link_one = get_post_meta($post->ID, 'option_link_one', true) ?  get_post_meta($post->ID, 'option_link_one', true) : "";
+        $option_link_two = get_post_meta($post->ID, 'option_link_two', true) ?  get_post_meta($post->ID, 'option_link_two', true) : "";
+        $option_enabled = get_post_meta($post->ID, 'option_enabled', true) ?  get_post_meta($post->ID, 'option_enabled', true) : "";
 
 ?>
 
         <div class="row">
-            <div class="label">Textfield</div>
-            <div class="fields"><input type="text" name="_diwp_text_field" value="<?php echo $diwp_textfield; ?>"> </div>
+            <div class="label"><strong>Title</strong></div>
+            <div class="fields"><input type="text" name="option_title" class="widefat" value="<?php echo $option_title; ?>"> </div>
         </div>
 
         <br />
 
         <div class="row">
-            <div class="label">Radio Fields</div>
+            <div class="label"><strong>Subtitle</strong></div>
+            <div class="fields"><input type="text" name="option_subtitle" class="widefat" value="<?php echo $option_subtitle; ?>"> </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="label"><strong>Description</strong></div>
             <div class="fields">
-                <label><input type="radio" name="_diwp_radio_field" value="R1" <?php if ($diwp_radiofield == 'R1') echo 'checked'; ?> /> Radio Option 1 </label>
-                <label><input type="radio" name="_diwp_radio_field" value="R2" <?php if ($diwp_radiofield == 'R2') echo 'checked'; ?> /> Radio Option 2</label>
-                <label><input type="radio" name="_diwp_radio_field" value="R3" <?php if ($diwp_radiofield == 'R3') echo 'checked'; ?> /> Radio Option 3</label>
+                <textarea rows="5" name="option_description"><?php echo $option_description; ?></textarea>
             </div>
         </div>
 
         <br />
 
         <div class="row">
-            <div class="label">Checkbox Fields</div>
+            <div class="label"><strong>Short Descriptions</strong></div>
             <div class="fields">
-                <label><input type="checkbox" name="_diwp_checkbox_field[]" value="C1" <?php if (in_array('C1', $diwp_checkboxfield)) echo 'checked'; ?> /> Checkbox Option 1</label>
-                <label><input type="checkbox" name="_diwp_checkbox_field[]" value="C2" <?php if (in_array('C2', $diwp_checkboxfield)) echo 'checked'; ?> /> Checkbox Option 2</label>
-                <label><input type="checkbox" name="_diwp_checkbox_field[]" value="C3" <?php if (in_array('C3', $diwp_checkboxfield)) echo 'checked'; ?> /> Checkbox Option 3</label>
+                <textarea rows="5" name="option_short_description"><?php echo $option_short_description; ?></textarea>
             </div>
         </div>
 
         <br />
 
         <div class="row">
-            <div class="label">Select Dropdown</div>
+            <div class="label"><strong>Category</strong></div>
+            <div class="fields"><input type="text" name="option_category" value="<?php echo $option_category; ?>"> </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="label"><strong>Link One</strong></div>
+            <div class="fields"><input type="text" name="option_link_one" class="widefat" value="<?php echo $option_link_one; ?>"> </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="label"><strong>Link Two</strong></div>
+            <div class="fields"><input type="text" name="option_link_two" class="widefat" value="<?php echo $option_link_two; ?>"> </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="label"><strong>Enabled</strong></div>
             <div class="fields">
-                <select name="_diwp_select_field">
-                    <option value="">Select Option</option>
-                    <option value="1" <?php if ($diwp_selectfield == '1') echo 'selected'; ?>>Option 1</option>
-                    <option value="2" <?php if ($diwp_selectfield == '2') echo 'selected'; ?>>Option 2</option>
-                    <option value="3" <?php if ($diwp_selectfield == '3') echo 'selected'; ?>>Option 3</option>
+                <select name="option_enabled">
+                    <option value="1" <?php if ($option_enabled == '1') echo 'selected'; ?>>Yes</option>
+                    <option value="2" <?php if ($option_enabled == '2') echo 'selected'; ?>>No</option>
                 </select>
             </div>
         </div>
 
-        <br />
 
-        <div class="row">
-            <div class="label">Textarea</div>
-            <div class="fields">
-                <textarea rows="5" name="_diwp_textarea_field"><?php echo $diwp_textareafield; ?></textarea>
-            </div>
-        </div>
 
 <?php
     }
@@ -164,24 +182,36 @@ class MPP_App_Support_Post_Type
         global $post;
 
 
-        if (isset($_POST["_diwp_text_field"])) :
-            update_post_meta($post->ID, '_diwp_text_field', $_POST["_diwp_text_field"]);
+        if (isset($_POST["option_title"])) :
+            update_post_meta($post->ID, 'option_title', $_POST["option_title"]);
         endif;
 
-        if (isset($_POST["_diwp_radio_field"])) :
-            update_post_meta($post->ID, '_diwp_radio_field', $_POST["_diwp_radio_field"]);
+        if (isset($_POST["option_subtitle"])) :
+            update_post_meta($post->ID, 'option_subtitle', $_POST["option_subtitle"]);
         endif;
 
-        if (isset($_POST["_diwp_checkbox_field"])) :
-            update_post_meta($post->ID, '_diwp_checkbox_field', $_POST["_diwp_checkbox_field"]);
+        if (isset($_POST["option_description"])) :
+            update_post_meta($post->ID, 'option_description', $_POST["option_description"]);
         endif;
 
-        if (isset($_POST["_diwp_select_field"])) :
-            update_post_meta($post->ID, '_diwp_select_field', $_POST["_diwp_select_field"]);
+        if (isset($_POST["option_short_description"])) :
+            update_post_meta($post->ID, 'option_short_description', $_POST["option_short_description"]);
         endif;
 
-        if (isset($_POST["_diwp_textarea_field"])) :
-            update_post_meta($post->ID, '_diwp_textarea_field', $_POST["_diwp_textarea_field"]);
+        if (isset($_POST["option_category"])) :
+            update_post_meta($post->ID, 'option_category', $_POST["option_category"]);
+        endif;
+
+        if (isset($_POST["option_link_one"])) :
+            update_post_meta($post->ID, 'option_link_one', $_POST["option_link_one"]);
+        endif;
+
+        if (isset($_POST["option_link_two"])) :
+            update_post_meta($post->ID, 'option_link_two', $_POST["option_link_two"]);
+        endif;
+
+        if (isset($_POST["option_enabled"])) :
+            update_post_meta($post->ID, 'option_enabled', $_POST["option_enabled"]);
         endif;
     }
 }

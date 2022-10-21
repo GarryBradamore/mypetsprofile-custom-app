@@ -21,6 +21,7 @@ function bbapp_custom_work_init()
         include 'blocks/directorist-category.php';
         include 'blocks/frontpage-menu-custom.php';
         include 'blocks/mpp-image-menu.php';
+        include 'blocks/app-menu-block.php';
 
         // Custom post type
         include 'inc/mpp-custom-post-type.php';
@@ -29,6 +30,7 @@ function bbapp_custom_work_init()
         BuddyBossApp\Custom\DirectoristCategory::instance();
         BuddyBossApp\Custom\FrontpageMenuCustom::instance();
         BuddyBossApp\Custom\MppImageMenu::instance();
+        BuddyBossApp\Custom\AppMenuBlock::instance();
     }
 }
 add_action('plugins_loaded', 'bbapp_custom_work_init');

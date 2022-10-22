@@ -22,6 +22,7 @@ function bbapp_custom_work_init()
         include 'blocks/frontpage-menu-custom.php';
         include 'blocks/mpp-image-menu.php';
         include 'blocks/app-menu-block.php';
+        include 'blocks/mpp-news-block.php';
 
         // Custom post type
         include 'inc/mpp-custom-post-type.php';
@@ -31,6 +32,7 @@ function bbapp_custom_work_init()
         BuddyBossApp\Custom\FrontpageMenuCustom::instance();
         BuddyBossApp\Custom\MppImageMenu::instance();
         BuddyBossApp\Custom\AppMenuBlock::instance();
+        BuddyBossApp\Custom\MppNewsBlock::instance();
     }
 }
 add_action('plugins_loaded', 'bbapp_custom_work_init');

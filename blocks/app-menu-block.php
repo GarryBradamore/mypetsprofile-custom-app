@@ -47,7 +47,7 @@ class AppMenuBlock extends GutenbergBlockAbstract
     public function init()
     {
         parent::init();
-        add_filter('bbapp_custom_block_data', array($this, 'update_block_data'), 10, 2);
+        add_filter('bbapp_custom_block_data', array($this, 'update_menu_block_data'), 10, 2);
     }
 
     function get_attributes()
@@ -97,7 +97,7 @@ class AppMenuBlock extends GutenbergBlockAbstract
         return array();
     }
 
-    function update_block_data($app_page_data, $block_data)
+    function update_menu_block_data($app_page_data, $block_data)
     {
         $selected_options = '';
 
@@ -114,7 +114,7 @@ class AppMenuBlock extends GutenbergBlockAbstract
         );
 
         $app_page_data['data']['data_source'] = $data_source;
-        $app_page_data['data']['selected_options'] = $this->get_menu_options($selected_options);
+        $app_page_data['data']['menu_options'] = $this->get_menu_options($selected_options);
 
         return $app_page_data;
     }
@@ -130,26 +130,31 @@ class AppMenuBlock extends GutenbergBlockAbstract
 
         $selected_options = explode(',', $selected_options);
 
-        $options = new WP_Query(
+        $options = get_posts(
             array(
                 'post_type' => 'mpp_app_menu',
                 'post_status' => 'publish',
-                'posts_per_page' => -1,
+                'numberposts' => -1,
                 'post__in' => $selected_options,
-                'orderby' => 'include',
+                'orderby' => 'post__in',
                 'order' => 'ASC',
-                'meta_key' => 'option_enabled',
-                'meta_value' => '1',
+                'meta_query' => array(
+                    array(
+                        'key'     => 'option_enabled',
+                        'value'   => '1',
+                        'compare' => '=',
+                    ),
+                ),
             )
         );
 
-        if ($options->have_posts()) {
-            while ($options->have_posts()) {
-                $options->the_post();
-                $option_id = get_the_ID();
+        if ($options) {
+            foreach ($options as $option) :
+                setup_postdata($option);
+                $option_id = $option->ID;
 
                 //fields
-                $title = get_the_title();
+                $title = $option->post_title;
                 $option_title = get_post_meta($option_id, 'option_title', true) ?  get_post_meta($option_id, 'option_title', true) : "";
                 $option_subtitle = get_post_meta($option_id, 'option_subtitle', true) ?  get_post_meta($option_id, 'option_subtitle', true) : "";
                 $option_description = get_post_meta($option_id, 'option_description', true) ?  get_post_meta($option_id, 'option_description', true) : "";
@@ -174,7 +179,8 @@ class AppMenuBlock extends GutenbergBlockAbstract
                     'option_link_two' => $option_link_two,
                     'image' => $image,
                 );
-            }
+            endforeach;
+            wp_reset_postdata();
         }
 
         return $data;

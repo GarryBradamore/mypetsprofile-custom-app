@@ -126,11 +126,14 @@ class AppMenuBlock extends GutenbergBlockAbstract
     {
         $data = [];
 
-        if (empty($selected_cats)) return $data;
+        if (empty($selected_options)) return $data;
+
+        $selected_options = explode(',', $selected_options);
 
         $options = new WP_Query(
             array(
                 'post_type' => 'mpp_app_menu',
+                'post_status' => 'publish',
                 'posts_per_page' => -1,
                 'post__in' => $selected_options,
                 'orderby' => 'include',

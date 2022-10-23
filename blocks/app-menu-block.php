@@ -114,7 +114,7 @@ class AppMenuBlock extends GutenbergBlockAbstract
         );
 
         $app_page_data['data']['data_source'] = $data_source;
-        $app_page_data['data']['menu_options'] = $this->get_menu_options($selected_options);
+        $app_page_data['data']['app_menu_options'] = $this->get_menu_options($selected_options);
 
         return $app_page_data;
     }

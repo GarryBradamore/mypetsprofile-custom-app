@@ -60,10 +60,28 @@ class MppNewsBlock extends GutenbergBlockAbstract
                 'label'     => 'Enter Title',
             ),
             array(
-                'name'      => 'category',
+                'name'      => 'news_endpoint',
                 'fieldtype' => 'text',
                 'default'   => '',
-                'label'     => 'Enter category',
+                'label'     => 'Enter news endpoint',
+            ),
+            array(
+                'name'      => 'news_category',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Enter news category',
+            ),
+            array(
+                'name'      => 'canada_category',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Enter Canada category',
+            ),
+            array(
+                'name'      => 'us_category',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Enter US category',
             )
         );
     }
@@ -87,21 +105,36 @@ class MppNewsBlock extends GutenbergBlockAbstract
 
     function update_block_data($app_page_data, $block_data)
     {
-        $category = '';
+        $news_endpoint = '';
+        $news_category = '';
+        $canada_category = '';
+        $us_category = '';
 
         // Selected Cats.
-        if (isset($block_data['attrs']['category']) && !empty($block_data['attrs']['category'])) {
-            $category = $block_data['attrs']['category'];
+        if (isset($block_data['attrs']['news_endpoint']) && !empty($block_data['attrs']['news_endpoint'])) {
+            $news_endpoint = $block_data['attrs']['news_endpoint'];
+        }
+        if (isset($block_data['attrs']['news_category']) && !empty($block_data['attrs']['news_category'])) {
+            $news_category = $block_data['attrs']['news_category'];
+        }
+        if (isset($block_data['attrs']['canada_category']) && !empty($block_data['attrs']['canada_category'])) {
+            $canada_category = $block_data['attrs']['canada_category'];
+        }
+        if (isset($block_data['attrs']['us_category']) && !empty($block_data['attrs']['us_category'])) {
+            $us_category = $block_data['attrs']['us_category'];
         }
 
         $data_source = array(
             'type'           => 'fetch',
             'request_params' => array(
-                'category' => $category,
+                'news_endpoint' => $news_endpoint,
+                'news_category' => $news_category,
+                'canada_category' => $canada_category,
+                'us_category' => $us_category,
             ),
         );
 
-        $app_page_data['data']['data_source'] = $data_source;
+        $app_page_data['data']['news_data_source'] = $data_source;
 
         return $app_page_data;
     }

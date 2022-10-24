@@ -82,6 +82,12 @@ class MppNewsBlock extends GutenbergBlockAbstract
                 'fieldtype' => 'text',
                 'default'   => '',
                 'label'     => 'Enter US category',
+            ),
+            array(
+                'name'      => 'other_category',
+                'fieldtype' => 'text',
+                'default'   => '',
+                'label'     => 'Enter Other category',
             )
         );
     }
